@@ -31,6 +31,12 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'io.projectreactor:reactor-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    // r2dbc
+    implementation "org.springframework.boot:spring-boot-starter-data-r2dbc"
+    implementation 'io.asyncer:r2dbc-mysql:1.2.0'
+    testRuntimeOnly 'com.h2database:h2'
+    testImplementation 'io.r2dbc:r2dbc-h2'
 }
 
 tasks.named('test') {
