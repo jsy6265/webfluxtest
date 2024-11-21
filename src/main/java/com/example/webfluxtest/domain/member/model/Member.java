@@ -1,5 +1,6 @@
 package com.example.webfluxtest.domain.member.model;
 
+import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -8,6 +9,7 @@ import org.springframework.data.relational.core.mapping.Table;
 import java.time.LocalDateTime;
 
 @Table("member")
+@Getter
 public class Member {
     @Id
     private String id;
