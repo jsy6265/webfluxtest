@@ -17,8 +17,8 @@ public class BoardController {
     private final BoardService boardService;
 
     @PostMapping
-    public Mono<ResponseEntity<Void>> createBoard(@RequestBody Mono<BoardDto> boardDtoMono){
-       return boardDtoMono.flatMap(boardService::createBoard)
+    public Mono<ResponseEntity<Void>> createBoard(@RequestParam int delayTime, @RequestBody Mono<BoardDto> boardDtoMono) {
+       return boardDtoMono.flatMap(boardDto -> boardService.createBoard(boardDto, delayTime))
                 .then(Mono.just(ResponseEntity.ok().build()));
     }
 
