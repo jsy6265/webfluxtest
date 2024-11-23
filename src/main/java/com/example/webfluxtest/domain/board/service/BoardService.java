@@ -13,10 +13,10 @@ import reactor.core.publisher.Mono;
 public class BoardService {
     private final BoardRepository boardRepository;
     private final MemberBoardService memberBoardService;
-    public Mono<Void> createBoard(BoardDto boardDto, String member_id) {
+    public Mono<Void> createBoard(BoardDto boardDto) {
         return boardRepository.save(boardDto.toEntity()).flatMap(
                 board -> {
-                    MemberBoardDto memberBoardDto = new MemberBoardDto(member_id, board.getId());
+                    MemberBoardDto memberBoardDto = new MemberBoardDto(boardDto.member_id, board.getId());
                     return memberBoardService.createMemberBoard(memberBoardDto);
                 }
         ).then();
