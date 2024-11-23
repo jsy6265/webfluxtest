@@ -6,6 +6,7 @@ import com.example.webfluxtest.domain.member_board.model.dto.MemberBoardDto;
 import com.example.webfluxtest.domain.member_board.service.MemberBoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
@@ -20,5 +21,9 @@ public class BoardService {
                     return memberBoardService.createMemberBoard(memberBoardDto);
                 }
         ).then();
+    }
+
+    public Flux<BoardDto> getBoards(){
+        return boardRepository.getBoards();
     }
 }
